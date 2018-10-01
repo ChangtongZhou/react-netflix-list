@@ -26,7 +26,7 @@ Launches the frontend
 
 In order to run the app successfully, make sure the backend and frontend are both launched and up running.
 
-**Note: For Each list, if there are more than 3 images, the horizontal scrolling triggers, so you can swip to the right to see more images**
+**Note: For each list, if there are more than 3 images, the horizontal scrolling triggers, so you can swipe to the right to see more images**
 
 ## Technologies used
 ### Frontend:
