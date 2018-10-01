@@ -11,13 +11,17 @@ Below you will find some information on how to perform common tasks on this proj
 Launches the backend
 
 `cd backend`
+
 `npm install`
+
 `node index.js`
 
 Launches the frontend
 
 `cd frontend`
+
 `npm install`
+
 `npm start`
 
 In order to run the app successfully, make sure the backend and frontend are both launched and up running.
