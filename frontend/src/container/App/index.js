@@ -3,10 +3,9 @@ import './style.css';
 import { connect } from 'react-redux';
 import { getList, removeMovie, addMovie} from '../../actions/list';
 
-import ButtonAppBar from '../Navbar';
-import Banner from '../Banner';
-import List from '../List';
-import List2 from '../List/index2';
+import ButtonAppBar from '../../components/Navbar';
+import Banner from '../../components/Banner';
+import List from '../../components/List';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +18,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log(`this.props: ${JSON.stringify(this.props, null, 2)}`)
     const { movies } = this.props
     if (!movies.error && Object.keys(movies.data).length > 0) {
       return (
@@ -39,7 +37,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(`what is state: ${JSON.stringify(state, null,2)}`)
   return {
     movies: state
   }

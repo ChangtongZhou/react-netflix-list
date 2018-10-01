@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GridList, GridListTile, GridListTileBar, IconButton, Button, Typography, Paper, Fade } from '@material-ui/core';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { GridList, GridListTile, Button, Typography, Fade } from '@material-ui/core';
 
 const styles = theme => ({
     title: {
         color: "white",
         paddingLeft: "31%",
-        // margin: theme.spacing.unit * 5,
         marginTop: theme.spacing.unit * 5
     },
     gallery: {
@@ -17,7 +15,6 @@ const styles = theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         padding: theme.spacing.unit * 2,
-        // marginBottom: theme.spacing.unit * 10,
     },
     gridList: {
         flexWrap: 'nowrap',
@@ -35,9 +32,6 @@ const styles = theme => ({
             transition: '.5s ease',
         }
     },
-    // title: {
-    //     color: theme.palette.primary
-    // },
     titleBar: {
         background:
             'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
@@ -61,15 +55,13 @@ class List extends Component {
 
     handleClick = (id) => {
         console.log('unhovering on this img');
-        if (this.state.isHovered) {
+        if (this.state.isHovered[id]) {
             this.props.updateList(id);
-            this.setState({ isHovered: false });
+            let isHover = [...this.state.isHovered];
+            isHover[id] = false;
+            this.setState({ isHovered: isHover });
         }
-
-        // document.removeEventListener('click', this.mouseOn, false);
     }
-
-
 
     render() {
         const { classes, list, category, buttonName } = this.props;
@@ -80,12 +72,9 @@ class List extends Component {
 
                     <GridList cellHeight={'auto'} className={classes.gridList} cols={3}>
                         {list.map(movie => (
-                            // <div key={movie.id}>
                             <GridListTile key={movie.id}>
                                 <div className={classes.content}>
-
                                     <img src={movie.img} alt={movie.title} className={classes.gridImg} onMouseOver={() => this.mouseOn(movie.id)} />
-                                    {/* <p style={{color: "white"}}>{movie.title}</p> */}
                                     <Typography variant="subheading" style={{ color: "white", padding: "5px" }}>{movie.title} </Typography>
                                     <Fade in={this.state.isHovered[movie.id]}>
                                         <Button
@@ -101,21 +90,13 @@ class List extends Component {
                                 </div>
 
                             </GridListTile>
-
-
                         ))}
-
                     </GridList>
 
                 </div>
-
-
-
             </div>
         )
     }
-
-
 }
 
 List.propTypes = {
